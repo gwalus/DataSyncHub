@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38D855C8-62C0-47C3-B787-209CD41FBA44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{E3E5568F-DBC3-4028-8F8A-31D3230CC4C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A01538A1-FF11-4539-B7C6-BBCA0A05B22D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSyncHub.Bootstrapper", "src\Bootstrapper\DataSyncHub.Bootstrapper\DataSyncHub.Bootstrapper.csproj", "{D35CB515-1143-476C-A7F0-F639A2126B16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A248E99C-F683-47C7-A88D-A5F4AA7C800E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{202CA0F7-86FB-48DF-835B-902777323EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Modules.Users.Api", "src\Modules\Users\DataSyncHub.Modules.Users.Api\DataSyncHub.Modules.Users.Api.csproj", "{5055C658-B20A-4ECD-B621-8DD80C64D7CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Modules.Users.Core", "src\Modules\Users\DataSyncHub.Modules.Users.Core\DataSyncHub.Modules.Users.Core.csproj", "{1171BDF1-30CF-40B6-958D-5B4381A571C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D35CB515-1143-476C-A7F0-F639A2126B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35CB515-1143-476C-A7F0-F639A2126B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35CB515-1143-476C-A7F0-F639A2126B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35CB515-1143-476C-A7F0-F639A2126B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5055C658-B20A-4ECD-B621-8DD80C64D7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5055C658-B20A-4ECD-B621-8DD80C64D7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5055C658-B20A-4ECD-B621-8DD80C64D7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5055C658-B20A-4ECD-B621-8DD80C64D7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1171BDF1-30CF-40B6-958D-5B4381A571C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1171BDF1-30CF-40B6-958D-5B4381A571C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1171BDF1-30CF-40B6-958D-5B4381A571C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1171BDF1-30CF-40B6-958D-5B4381A571C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3E5568F-DBC3-4028-8F8A-31D3230CC4C5} = {38D855C8-62C0-47C3-B787-209CD41FBA44}
+		{A01538A1-FF11-4539-B7C6-BBCA0A05B22D} = {38D855C8-62C0-47C3-B787-209CD41FBA44}
+		{D35CB515-1143-476C-A7F0-F639A2126B16} = {E3E5568F-DBC3-4028-8F8A-31D3230CC4C5}
+		{A248E99C-F683-47C7-A88D-A5F4AA7C800E} = {38D855C8-62C0-47C3-B787-209CD41FBA44}
+		{202CA0F7-86FB-48DF-835B-902777323EF3} = {A248E99C-F683-47C7-A88D-A5F4AA7C800E}
+		{5055C658-B20A-4ECD-B621-8DD80C64D7CF} = {202CA0F7-86FB-48DF-835B-902777323EF3}
+		{1171BDF1-30CF-40B6-958D-5B4381A571C0} = {202CA0F7-86FB-48DF-835B-902777323EF3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC9B0AFA-E6BD-4540-BF50-E0880046C059}
+	EndGlobalSection
+EndGlobal
