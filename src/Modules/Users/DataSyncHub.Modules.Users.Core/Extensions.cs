@@ -10,8 +10,8 @@ namespace DataSyncHub.Modules.Users.Core
         public static IServiceCollection AddCore(this IServiceCollection services)
         {
             services.AddSingleton<INinjasApiService, NinjasApiService>();
-
             services.AddSingleton<IUsersRepository, UsersRepository>();
+            services.AddSingleton<IUsersCacheService, UsersCacheService>();
 
             services.AddSingleton<PeriodicHostedService>();
             services.AddHostedService(

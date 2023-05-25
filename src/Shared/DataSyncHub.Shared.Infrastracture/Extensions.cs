@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Configuration;
 using DataSyncHub.Shared.Infrastracture.Data.MongoDb;
-using MongoDB.Driver;
+using StackExchange.Redis;
 
 [assembly: InternalsVisibleTo("DataSyncHub.Bootstrapper")]
 namespace DataSyncHub.Shared.Infrastracture
@@ -22,17 +22,20 @@ namespace DataSyncHub.Shared.Infrastracture
                 client.DefaultRequestHeaders.Add("X-Api-Key", configuration?["Secrets:ApiNinjasToken"]);
             });
 
-            services.Configure<MongoDbOptions>(configuration.GetSection("MongoDB"));
-            services.AddSingleton<IMongoClient>(client =>
-            {
-                return new MongoClient(configuration["MongoDB:ConnectionURI"]);
-            });
+            services.AddMongoDb(configuration);
+
+            services.AddSingleton<IConnectionMultiplexer>(sp =>
+                 ConnectionMultiplexer.Connect(new ConfigurationOptions
+                 {
+                     EndPoints = { $"{configuration["Redis:Host"]}:{configuration["Redis:Port"]}" },
+                     AbortOnConnectFail = false,
+                 }));
 
             services.AddControllers()
                 .ConfigureApplicationPartManager(manager =>
                 {
                     manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
-                });            
+                });
 
             return services;
         }
