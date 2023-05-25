@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\DataSyncHub.Shared.Abstractions\DataSyncHub.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\DataSyncHub.Shared.Infrastracture\DataSyncHub.Shared.Infrastracture.csproj" />
+  </ItemGroup>
+
 </Project>
