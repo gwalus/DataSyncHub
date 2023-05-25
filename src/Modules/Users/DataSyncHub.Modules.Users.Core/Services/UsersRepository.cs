@@ -11,11 +11,13 @@ namespace DataSyncHub.Modules.Users.Core.Services
     public class UsersRepository : IUsersRepository
     {
         private readonly IMongoCollection<User> _usersCollection;
+        private readonly IUsersCacheService _usersCacheService;
 
-        public UsersRepository(IOptions<MongoDbOptions> options, IMongoClient mongoClient)
+        public UsersRepository(IOptions<MongoDbOptions> options, IMongoClient mongoClient, IUsersCacheService usersCacheService)
         {
             var database = mongoClient.GetDatabase(options.Value.DatabaseName);
             _usersCollection = database.GetCollection<User>("users");
+            _usersCacheService = usersCacheService;
         }
 
         public Task DeleteAsync(string id)
@@ -36,6 +38,7 @@ namespace DataSyncHub.Modules.Users.Core.Services
             };
 
             await _usersCollection.InsertOneAsync(user);
+            _usersCacheService.RemoveData("users");
         }
 
         public async Task<List<RandomUser>> GetAsync()
