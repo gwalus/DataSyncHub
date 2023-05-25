@@ -2,7 +2,7 @@
 
 namespace DataSyncHub.Modules.Users.Core.Models
 {
-    internal class RandomUser
+    public class RandomUser
     {
         [JsonPropertyName("username")]
         public string? Username { get; set; }
