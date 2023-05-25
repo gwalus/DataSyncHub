@@ -6,19 +6,15 @@ namespace DataSyncHub.Modules.Users.Api.Controllers
     [Route("users-module")]
     internal class UsersController : ControllerBase
     {
-        private readonly INinjasApiService _ninjasApiService;
+        private readonly IUsersRepository _usersRepository;
 
-        public UsersController(INinjasApiService ninjasApiService)
+        public UsersController(IUsersRepository usersRepository)
         {
-            _ninjasApiService = ninjasApiService;
+            _usersRepository = usersRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
-        {
-            await _ninjasApiService.GetRandomUserAsync();
-
-            return Ok("asdasda");
-        }
+        public async Task<ActionResult> GetUsers()
+            => Ok(await _usersRepository.GetAsync());
     }
 }

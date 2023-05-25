@@ -11,6 +11,8 @@ namespace DataSyncHub.Modules.Users.Core
         {
             services.AddSingleton<INinjasApiService, NinjasApiService>();
 
+            services.AddSingleton<IUsersRepository, UsersRepository>();
+
             services.AddSingleton<PeriodicHostedService>();
             services.AddHostedService(
                 provider => provider.GetRequiredService<PeriodicHostedService>());
