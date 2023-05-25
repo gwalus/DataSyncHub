@@ -1,8 +1,12 @@
+using DataSyncHub.Bootstrapper;
+using DataSyncHub.Shared.Infrastracture;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddInfrastructure();
 
-builder.Services.AddControllers();
+RegisterModules(builder);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,5 +25,15 @@ app.Map("/", () => "DataSyncHub API");
 
 app.UseAuthorization();
 
-
 app.Run();
+
+void RegisterModules(WebApplicationBuilder builder)
+{
+    var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
+    var modules = ModuleLoader.LoadModules(assemblies);
+
+    foreach (var module in modules)
+    {
+        module.Register(builder.Services);
+    }
+}
