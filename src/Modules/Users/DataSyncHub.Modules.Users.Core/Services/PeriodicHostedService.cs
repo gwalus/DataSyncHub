@@ -1,16 +1,15 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace DataSyncHub.Modules.Users.Core.Services
 {
     internal class PeriodicHostedService : BackgroundService
     {
-        private readonly ILogger<PeriodicHostedService> _logger;
+        private readonly Serilog.ILogger _logger;
         private readonly INinjasApiService _ninjasApiService;
         private readonly IUsersRepository _usersRepository;
         private readonly TimeSpan _period = TimeSpan.FromMinutes(1);
 
-        public PeriodicHostedService(ILogger<PeriodicHostedService> logger, INinjasApiService ninjasApiService, IUsersRepository usersRepository)
+        public PeriodicHostedService(Serilog.ILogger logger, INinjasApiService ninjasApiService, IUsersRepository usersRepository)
         {
             _logger = logger;
             _ninjasApiService = ninjasApiService;
@@ -30,12 +29,12 @@ namespace DataSyncHub.Modules.Users.Core.Services
 
                     await _usersRepository.CreateAsync(randomUser);
 
-                    _logger.LogInformation($"I retrieved user called: {randomUser.Name}");
+                    _logger.Information($"New random user has been saved: {randomUser.Name}");
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(
-                        $"Failed to execute PeriodicHostedService with exception message {ex.Message}. Good luck next round!");
+                    _logger.Error(
+                        $"Something went wrong. Inner message: {ex.Message}");
                 }
             }
         }
