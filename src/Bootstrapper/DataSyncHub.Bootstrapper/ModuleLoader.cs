@@ -1,5 +1,4 @@
 ﻿using DataSyncHub.Shared.Abstractions.Modules;
-using System.Linq;
 using System.Reflection;
 
 namespace DataSyncHub.Bootstrapper

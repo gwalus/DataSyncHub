@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A248
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{202CA0F7-86FB-48DF-835B-902777323EF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Modules.Users.Api", "src\Modules\Users\DataSyncHub.Modules.Users.Api\DataSyncHub.Modules.Users.Api.csproj", "{5055C658-B20A-4ECD-B621-8DD80C64D7CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSyncHub.Modules.Users.Api", "src\Modules\Users\DataSyncHub.Modules.Users.Api\DataSyncHub.Modules.Users.Api.csproj", "{5055C658-B20A-4ECD-B621-8DD80C64D7CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Modules.Users.Core", "src\Modules\Users\DataSyncHub.Modules.Users.Core\DataSyncHub.Modules.Users.Core.csproj", "{1171BDF1-30CF-40B6-958D-5B4381A571C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSyncHub.Modules.Users.Core", "src\Modules\Users\DataSyncHub.Modules.Users.Core\DataSyncHub.Modules.Users.Core.csproj", "{1171BDF1-30CF-40B6-958D-5B4381A571C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Shared.Abstractions", "src\Shared\DataSyncHub.Shared.Abstractions\DataSyncHub.Shared.Abstractions.csproj", "{3CBA6B51-9A56-4C43-8631-163872A8304A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSyncHub.Shared.Abstractions", "src\Shared\DataSyncHub.Shared.Abstractions\DataSyncHub.Shared.Abstractions.csproj", "{3CBA6B51-9A56-4C43-8631-163872A8304A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSyncHub.Shared.Infrastracture", "src\Shared\DataSyncHub.Shared.Infrastracture\DataSyncHub.Shared.Infrastracture.csproj", "{7EB5372D-4821-4202-AAAC-CEBDB82438EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSyncHub.Shared.Infrastructure", "src\Shared\DataSyncHub.Shared.Infrastructure\DataSyncHub.Shared.Infrastructure.csproj", "{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{3CBA6B51-9A56-4C43-8631-163872A8304A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CBA6B51-9A56-4C43-8631-163872A8304A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CBA6B51-9A56-4C43-8631-163872A8304A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7EB5372D-4821-4202-AAAC-CEBDB82438EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EB5372D-4821-4202-AAAC-CEBDB82438EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EB5372D-4821-4202-AAAC-CEBDB82438EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EB5372D-4821-4202-AAAC-CEBDB82438EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,7 +62,7 @@ Global
 		{5055C658-B20A-4ECD-B621-8DD80C64D7CF} = {202CA0F7-86FB-48DF-835B-902777323EF3}
 		{1171BDF1-30CF-40B6-958D-5B4381A571C0} = {202CA0F7-86FB-48DF-835B-902777323EF3}
 		{3CBA6B51-9A56-4C43-8631-163872A8304A} = {A01538A1-FF11-4539-B7C6-BBCA0A05B22D}
-		{7EB5372D-4821-4202-AAAC-CEBDB82438EA} = {A01538A1-FF11-4539-B7C6-BBCA0A05B22D}
+		{D91D6FF8-62FD-4FCF-BBB2-3389BEEB1089} = {A01538A1-FF11-4539-B7C6-BBCA0A05B22D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DC9B0AFA-E6BD-4540-BF50-E0880046C059}

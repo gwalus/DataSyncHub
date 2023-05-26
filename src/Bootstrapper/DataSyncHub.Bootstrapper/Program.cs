@@ -27,18 +27,12 @@ builder.Host.UseSerilog((context, sp, configuration) =>
         })
         .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
             .ReadFrom.Configuration(context.Configuration);
-
-        //.Enrich.WithEnvironmentName();
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 app.Map("/", () => "DataSyncHub API");
