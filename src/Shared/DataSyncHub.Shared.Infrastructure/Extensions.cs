@@ -2,8 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Configuration;
-using DataSyncHub.Shared.Infrastracture.Data.MongoDb;
-using StackExchange.Redis;
+using DataSyncHub.Shared.Infrastracture.DAL;
 
 [assembly: InternalsVisibleTo("DataSyncHub.Bootstrapper")]
 namespace DataSyncHub.Shared.Infrastracture
@@ -23,13 +22,7 @@ namespace DataSyncHub.Shared.Infrastracture
             });
 
             services.AddMongoDb(configuration);
-
-            services.AddSingleton<IConnectionMultiplexer>(sp =>
-                 ConnectionMultiplexer.Connect(new ConfigurationOptions
-                 {
-                     EndPoints = { $"{configuration["Redis:Host"]}:{configuration["Redis:Port"]}" },
-                     AbortOnConnectFail = false,
-                 }));
+            services.AddRedisCache(configuration);
 
             services.AddControllers()
                 .ConfigureApplicationPartManager(manager =>
