@@ -2,14 +2,14 @@
 
 namespace DataSyncHub.Modules.Users.Core.Services
 {
-    internal class PeriodicHostedService : BackgroundService
+    internal class PeriodicDataUploadService : BackgroundService
     {
         private readonly Serilog.ILogger _logger;
         private readonly INinjasApiService _ninjasApiService;
         private readonly IUsersRepository _usersRepository;
         private readonly TimeSpan _period = TimeSpan.FromMinutes(1);
 
-        public PeriodicHostedService(Serilog.ILogger logger, INinjasApiService ninjasApiService, IUsersRepository usersRepository)
+        public PeriodicDataUploadService(Serilog.ILogger logger, INinjasApiService ninjasApiService, IUsersRepository usersRepository)
         {
             _logger = logger;
             _ninjasApiService = ninjasApiService;
