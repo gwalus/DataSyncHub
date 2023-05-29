@@ -62,13 +62,15 @@ namespace DataSyncHub.Shared.Infrastracture
                     var elasticUri = context.Configuration["ElasticConfiguration:Uri"] 
                         ?? throw new ArgumentException("ElasticConfiguration:Uri configuration cannot be null or empty.");
 
+                    var indexFormat = $"{context.Configuration["ApplicationName"]}-logs-{context.HostingEnvironment.EnvironmentName?.ToLower().Replace('.', '-')}-{DateTime.UtcNow:yyyy-MM-ss}";
+
                     configuration.Enrich.FromLogContext()
                         .Enrich.WithMachineName()
                         .WriteTo.Console()
                         .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(
                             new Uri(elasticUri))
                         {
-                            IndexFormat = $"{context.Configuration["ApplicationName"]}-logs-{context.HostingEnvironment.EnvironmentName?.ToLower().Replace('.', '-')}-{DateTime.UtcNow:yyyy-MM-ss}",
+                            IndexFormat = indexFormat,
                             AutoRegisterTemplate = true,
                             NumberOfReplicas = 1,
                             NumberOfShards = 2,
