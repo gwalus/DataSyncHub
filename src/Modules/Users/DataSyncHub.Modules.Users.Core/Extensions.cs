@@ -13,9 +13,7 @@ namespace DataSyncHub.Modules.Users.Core
             services.AddSingleton<IUsersRepository, UsersRepository>();
             services.AddSingleton<IUsersCacheService, UsersCacheService>();
 
-            services.AddSingleton<PeriodicHostedService>();
-            services.AddHostedService(
-                provider => provider.GetRequiredService<PeriodicHostedService>());
+            services.AddHostedService<PeriodicDataUploadService>();
 
             return services;
         }

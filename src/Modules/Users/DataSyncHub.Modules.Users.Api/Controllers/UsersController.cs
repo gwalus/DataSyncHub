@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DataSyncHub.Modules.Users.Api.Controllers
 {
-    [Route("users-module")]
+    [Route("[controller]")]
     internal class UsersController : ControllerBase
     {
         private static readonly object _lock = new();

@@ -18,9 +18,11 @@ namespace DataSyncHub.Modules.Users.Core.Services
 
             var response = await httpClient.GetAsync("randomuser");
 
-            var user = await response.Content.ReadAsStringAsync();
+            var contentString = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<RandomUser>(user);
+            var randomUser = JsonSerializer.Deserialize<RandomUser>(contentString);
+
+            return randomUser;
         }
     }
 }
