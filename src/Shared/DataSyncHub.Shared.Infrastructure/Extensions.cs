@@ -7,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using DataSyncHub.Shared.Infrastructure.Healths;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
 
 [assembly: InternalsVisibleTo("DataSyncHub.Bootstrapper")]
 namespace DataSyncHub.Shared.Infrastracture
@@ -18,6 +21,12 @@ namespace DataSyncHub.Shared.Infrastracture
             using var serviceProvider = services.BuildServiceProvider();
 
             var configuration = serviceProvider.GetService<IConfiguration>();
+
+            services.AddHealthChecks()
+                .AddCheck<RedisHealthCheck>("redis")
+                .AddCheck<MongoDbHealthCheck>("mongodb")
+                .AddElasticsearch(configuration["ElasticConfiguration:Uri"])
+                .AddCheck<KibanaHealthCheck>("kibana");          
 
             services.AddHttpClient("api-ninjas", client =>
             {
@@ -41,6 +50,11 @@ namespace DataSyncHub.Shared.Infrastracture
 
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
         {
+            app.UseHealthChecks("/_health", new HealthCheckOptions
+            {
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
