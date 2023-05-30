@@ -13,6 +13,7 @@ Test project to learn and explore difference popular tools with .NET
 - display indexed logs in kibana
 - all of them works on docker container
 - base modular monolith architecture
+- services health checks
 
 
 ## Screenshots
@@ -63,6 +64,12 @@ Run services on docker
 
 ```bash
   docker compose up --build -d
+```
+
+Check health of services going to
+
+```bash
+  http://localhost:8080/_health
 ```
 
 Open app in web browser and try to get fake users
