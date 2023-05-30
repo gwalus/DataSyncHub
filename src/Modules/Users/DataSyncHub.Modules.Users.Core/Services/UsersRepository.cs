@@ -16,7 +16,7 @@ namespace DataSyncHub.Modules.Users.Core.Services
         public UsersRepository(IOptions<MongoDbOptions> options, IMongoClient mongoClient, IUsersCacheService usersCacheService)
         {
             var database = mongoClient.GetDatabase(options.Value.DatabaseName);
-            _usersCollection = database.GetCollection<User>("users");
+            _usersCollection = database.GetCollection<User>(options.Value.CollectionName);
             _usersCacheService = usersCacheService;
         }
 
