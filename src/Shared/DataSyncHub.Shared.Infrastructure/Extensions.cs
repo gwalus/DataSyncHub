@@ -20,13 +20,20 @@ namespace DataSyncHub.Shared.Infrastracture
         {
             using var serviceProvider = services.BuildServiceProvider();
 
-            var configuration = serviceProvider.GetService<IConfiguration>();
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
             services.AddHealthChecks()
-                .AddCheck<RedisHealthCheck>("redis")
-                .AddCheck<MongoDbHealthCheck>("mongodb")
+                .AddRedis($"{configuration["Redis:Host"]}:{configuration["Redis:Port"]}")
+                .AddMongoDb(configuration?["MongoDB:ConnectionURI"])
                 .AddElasticsearch(configuration["ElasticConfiguration:Uri"])
-                .AddCheck<KibanaHealthCheck>("kibana");          
+                .AddCheck<KibanaHealthCheck>("kibana");
+
+            //services
+            //    .AddHealthChecksUI(setup =>
+            //    {
+            //        setup.SetEvaluationTimeInSeconds(5);
+            //    })
+            //    .AddInMemoryStorage();
 
             services.AddHttpClient("api-ninjas", client =>
             {
@@ -60,6 +67,7 @@ namespace DataSyncHub.Shared.Infrastracture
             {
                 endpoints.MapControllers();
                 endpoints.MapGet("/", context => context.Response.WriteAsync("DataSyncHub API"));
+                //endpoints.MapHealthChecksUI();
             });
 
             app.UseSwagger();
